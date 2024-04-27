@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Employee/Employee.master" AutoEventWireup="true" CodeFile="Salary.master.cs" Inherits="Employee_Salary_Salary" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+     <table class="auto-style1" style="height: 300px">
+        <tr>
+            <td style="border: thin solid #000000;">
+                <div>
+                      <h3>
+                          <table class="auto-style1" style="vertical-align: middle">
+                              <tr>
+                                  <td style="vertical-align: middle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Salary Section</td>
+                              </tr>
+                          </table>
+                      </h3>
+                  </div> 
+                    <table class="auto-style1" style="text-align:center; height: 35px;">
+                        <tr>
+                            <td style="width: 100px; height: 42px;">
+                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Employee/Salary/ViewEarning.aspx" >View Earning</asp:HyperLink>
+                            </td>
+                            <td style="width: 100px; height: 42px;">
+                                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Employee/Salary/Deduction.aspx">View Deductions</asp:HyperLink>
+                            </td>
+                            <td style="width: 100px; height: 42px;">
+                                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Admin/Salary/TotalSalary.aspx">View Total Salary</asp:HyperLink>
+                            </td>
+                             <td style="width: 100px; height: 42px;">
+                                <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Admin/Department/DepartmentList.aspx">View Salary Report List</asp:HyperLink>
+                            </td>
+                            
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: thin solid #000000;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                    <table class="auto-style1" style="height: 331px">
+                        <tr>
+                            <td style="height: 234px; vertical-align: top;"></td>
+                        </tr>
+                    </table>
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+    </table>
+</asp:Content>
+

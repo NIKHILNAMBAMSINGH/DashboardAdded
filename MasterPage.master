@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+        .auto-style2 {
+            width: 87px;
+        }
+        .auto-style3 {
+            height: 442px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table class="auto-style1" style="margin-top:0px" >
+            <tr>
+                <td>
+                    <table class="auto-style1">
+                        <tr>
+                            <td class="auto-style2">
+                                <asp:Image ID="Image1" runat="server" Height="90px" ImageUrl="~/images/payroll.png" Width="97px" />
+                            </td>
+                            <td style="background-color:black; margin-top:0px">
+                                <div>
+                                    <h3 style="color:white;text-align:center">Payroll Management System</h3>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style3" style="vertical-align: top">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color:black">
+                    <div>
+                        <footer style="color:white;text-align:center; height: 24px; margin-top: 0px;">Powered by Picasoid</footer>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>

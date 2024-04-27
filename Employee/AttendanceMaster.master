@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Employee/Employee.master" AutoEventWireup="true" CodeFile="AttendanceMaster.master.cs" Inherits="Employee_AttendanceMaster" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+     <table class="auto-style1" style="height: 349px">
+        <tr>
+            <td style="border: thin solid #000000; height: 85px; vertical-align: top;">
+                <table class="auto-style1" style="height: 84px">
+                    <tr>
+                        <td class="auto-style5" style="height: 29px; width: 169px;">
+                           <div>
+                               <h3>Attendance Section</h3>
+                           </div> </td>
+                        <td class="auto-style5" style="height: 29px">
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 169px">
+                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Employee/AttendanceEmployee.aspx">Mark In/Mark Out</asp:HyperLink>
+      
+                            
+                        &nbsp;</td>
+                        <td>
+                            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Employee/AttendanceReport.aspx">Attendance Report</asp:HyperLink>
+      
+                            
+                        </td>
+                    </tr>
+                </table>
+              </td>
+
+
+            
+        </tr>
+        <tr>
+            <td style="border: thin solid #000000;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                    <table class="auto-style1" style="height: 331px">
+                        <tr>
+                            <td style="height: 234px; vertical-align: top;"></td>
+                        </tr>
+                    </table>
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+    </table>
+</asp:Content>
+

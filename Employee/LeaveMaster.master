@@ -1,0 +1,46 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Employee/Employee.master" AutoEventWireup="true" CodeFile="LeaveMaster.master.cs" Inherits="Employee_LeaveMaster" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+   
+    <table class="auto-style1" style="height: 349px">
+        <tr>
+            <td style="border: thin solid #000000;">
+                <div>
+                      <h3>
+                          <table class="auto-style1" style="vertical-align: middle">
+                              <tr>
+                                  <td style="vertical-align: middle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Leave Section</td>
+                              </tr>
+                          </table>
+                      </h3>
+                  </div> 
+                    <table class="auto-style1" style="text-align:center">
+                        <tr>
+                            <td style="width: 219px">
+                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Employee/ApplyForLeave.aspx">Apply for Leave</asp:HyperLink>
+                            </td>
+                            <td style="width: 265px">
+                                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Employee/LeaveStatus.aspx">Leave Status</asp:HyperLink>
+                            </td>
+                            <td style="width: 265px">
+                                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Employee/LeaveReport.aspx">Leave Report</asp:HyperLink>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: thin solid #000000;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                    <table class="auto-style1" style="height: 331px">
+                        <tr>
+                            <td style="height: 234px; vertical-align: top;"></td>
+                        </tr>
+                    </table>
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+    </table>
+</asp:Content>
+

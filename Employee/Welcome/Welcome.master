@@ -1,0 +1,18 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Employee/Employee.master" AutoEventWireup="true" CodeFile="Welcome.master.cs" Inherits="Employee_Welcome_Welcome" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+     <table class="auto-style1" style="height: 450px">
+        <tr>
+            <td style="border: thin solid #000000;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                   <table class="auto-style1" style="height: 100%">
+                        <tr>
+                            <td style="height: 100%; vertical-align: top;"></td>
+                        </tr>
+                    </table>
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+    </table>
+</asp:Content>
+
