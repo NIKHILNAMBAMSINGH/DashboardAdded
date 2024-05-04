@@ -20,7 +20,7 @@ public partial class Admin_Employee_SearchEmployee : System.Web.UI.Page
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "SELECT * FROM dbo.EmployeeDetailsTbl where EmpId=@EmpId";
+                string query = "SELECT Concat(FirstName,'',LastName) as EmpName, EmpId as EmpId,Dob as Dob,Gender as Gender, ContactNumber as ContactNumber, Email as Email,Address as Address, AddedDate as AddedDate FROM dbo.EmployeeDetailsTbl where EmpId=@EmpId";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.SelectCommand.Parameters.AddWithValue("@EmpId", EmpId);
                 DataTable dt = new DataTable();

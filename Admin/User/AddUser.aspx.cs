@@ -24,7 +24,7 @@ public partial class Admin_User_AddUser : System.Web.UI.Page
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
 
-            string query = "SELECT EmpId, CONCAT(FirstName, ' ', LastName) AS EmpName FROM dbo.EmployeeDetailsTbl";
+            string query = "SELECT EmpId, CONCAT(FirstName, ' ', LastName) AS EmpName FROM dbo.EmployeeDetailsTbl where EmpId NOT IN (Select EmpId from dbo.UserDetailsTbl)";
 
             SqlCommand command = new SqlCommand(query, connection);
             connection.Open();
@@ -35,6 +35,7 @@ public partial class Admin_User_AddUser : System.Web.UI.Page
             ddlDesignation.DataValueField = "EmpId";
             ddlDesignation.DataBind();
         }
+        ddlDesignation.Items.Insert(0, new ListItem("Select employee Name", ""));
     }
     protected void btnAddEmployee_Click(object sender, EventArgs e)
     {
@@ -62,6 +63,7 @@ public partial class Admin_User_AddUser : System.Web.UI.Page
                 {
                     lblMessage.Text = "Added successfully";
                     lblMessage.ForeColor = System.Drawing.Color.Green;
+                    BindDesignation();
 
                 }
                 else

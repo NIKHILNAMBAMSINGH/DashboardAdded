@@ -9,6 +9,7 @@
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">
                  <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Admin/Designation/DesignationDasboard.aspx">Designation Dashboard</asp:HyperLink>
+                > Add Designation 
             </h6>
         </div>
         <br />

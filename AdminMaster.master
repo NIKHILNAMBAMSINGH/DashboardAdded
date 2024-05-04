@@ -41,10 +41,11 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="Empty.aspx">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+           <li class="nav-item active">
+             <asp:HyperLink ID="HyperLink5" runat="server" CssClass="nav-link" NavigateUrl="~/Empty.aspx">
+              <i class="fas fa-fw fa-tachometer-alt"></i>
+               <span>Dashboard</span>
+             </asp:HyperLink>
             </li>
 
             <!-- Divider -->
@@ -87,10 +88,13 @@
 
 
              <li class="nav-item active">
-                <a class="nav-link" href="Admin/Department/DepartmentDashboard.aspx">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Leave</span></a>
-            </li>
+               <asp:HyperLink ID="HyperLink6" runat="server" CssClass="nav-link" NavigateUrl="~/Admin/Leave/LeaveDashboard.aspx">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+           <span>Leave</span>
+           </asp:HyperLink>
+          </li>
+
+
             <li class="nav-item active">
                 <a class="nav-link" href="Admin/Department/DepartmentDashboard.aspx">
                     <i class="fas fa-fw fa-tachometer-alt"></i>

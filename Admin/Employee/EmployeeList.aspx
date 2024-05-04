@@ -9,7 +9,8 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">
-                 <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Admin/Department/DepartmentDashboard.aspx">Employee</asp:HyperLink>
+                 <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Admin/Employee/EmployeeDashboard.aspx">Employee Dashboard</asp:HyperLink>
+                > Employee List
             </h6>
         </div>
         <div class="card-body">
@@ -19,6 +20,7 @@
     HeaderStyle-CssClass="thead-dark">
     <Columns>
         <asp:BoundField DataField="EmpId" HeaderText="Employee ID" SortExpression="DeptId" ItemStyle-CssClass="align-middle" />
+        <asp:BoundField DataField="EmpName" HeaderText="Employee Name" SortExpression="EmpName" ItemStyle-CssClass="align-middle" />
         <asp:BoundField DataField="Dob" HeaderText="DOB" SortExpression="Dob" ItemStyle-CssClass="align-middle" />
         <asp:BoundField DataField="AddedDate" HeaderText="Added Date" SortExpression="AddedDate" ItemStyle-CssClass="align-middle" />
         <asp:BoundField DataField="Gender" HeaderText="Gender" SortExpression="Gender" ItemStyle-CssClass="align-middle" />
