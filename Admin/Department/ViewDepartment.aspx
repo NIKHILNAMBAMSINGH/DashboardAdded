@@ -18,7 +18,7 @@
     DataKeyNames="DeptId" style="margin-left: 0px" EmptyDataText="No data found" ShowHeaderWhenEmpty="true" CssClass="table table-bordered"
     HeaderStyle-CssClass="thead-dark">
     <Columns>
-        <asp:BoundField DataField="DeptId" HeaderText="Department ID" SortExpression="DeptId" ItemStyle-CssClass="align-middle" />
+        <asp:BoundField DataField="DeptId" HeaderText="Department Code" SortExpression="DeptId" ItemStyle-CssClass="align-middle" />
         <asp:BoundField DataField="DeptName" HeaderText="Department Name" SortExpression="DeptName" ItemStyle-CssClass="align-middle" />
         <asp:BoundField DataField="AddedDate" HeaderText="Added Date" SortExpression="AddedDate" ItemStyle-CssClass="align-middle" />
     </Columns>

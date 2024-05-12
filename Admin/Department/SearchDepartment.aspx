@@ -8,13 +8,13 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">
-                 <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Admin/Department/DepartmentDashboard.aspx">Department</asp:HyperLink>
+                 <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Admin/Department/DepartmentDashboard.aspx">Department Dashboard</asp:HyperLink>
                 > Search Department
             </h6>
         </div>
         <br />
                <div class="input-group">
-    <label for="txtDeptId" style="margin-left:10px;margin-right:10px">Department ID :</label>
+    <label for="txtDeptId" style="margin-left:10px;margin-right:10px">Department Code :</label>
                    
     <asp:TextBox ID="txtDeptId" runat="server"  Height="30px"></asp:TextBox>
     <label for="txtDeptName" style="margin-left:20px;margin-right:10px">Department Name :</label>

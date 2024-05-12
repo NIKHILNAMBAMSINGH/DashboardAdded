@@ -54,13 +54,13 @@ public partial class Admin_Leave_LeaveApproved : System.Web.UI.Page
         try
         {
             string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
-            int EmpId = Convert.ToInt32(txtDeptId.Text);
+
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string query = "SELECT e.EmpId as EmpId, l.LeaveId as LeaveId, CONCAT(e.FirstName, ' ', e.LastName) AS EmpName, l.LeaveType, l.StartDate, l.EndDate, l.NoOfDays, l.LeaveStatus, l.Reason, l.AddedDate as AddedDate FROM dbo.LeaveDetailsTbl l LEFT JOIN dbo.EmployeeDetailsTbl e ON l.EmpId = e.EmpId WHERE l.LeaveStatus = 'Approved'";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                adapter.SelectCommand.Parameters.AddWithValue("@EmpId", EmpId);
+
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
 

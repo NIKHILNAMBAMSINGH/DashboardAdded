@@ -38,7 +38,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="3" CellPadding="0" OnPageIndexChanging="OnPageIndexChanging"
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="5" CellPadding="0" OnPageIndexChanging="OnPageIndexChanging"
     DataKeyNames="LeaveId" style="margin-left: 0px" ShowHeaderWhenEmpty="true" CssClass="table table-bordered"
     HeaderStyle-CssClass="thead-dark">
     <Columns>

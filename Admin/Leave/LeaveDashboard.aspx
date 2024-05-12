@@ -37,7 +37,7 @@
 
                             <td >
                                 <div style="margin-left:230px">
-                                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Admin/Employee/EmployeeList.aspx">Leave List</asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Admin/Leave/LeaveList.aspx">Leave List</asp:HyperLink>
                                     </div>
                             </td>
                             

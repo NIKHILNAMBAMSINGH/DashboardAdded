@@ -14,7 +14,7 @@
         </div>
         <br />
                <div class="input-group">
-    <label for="txtDeptId" style="margin-left:10px;margin-right:10px">Designation ID :</label>
+    <label for="txtDeptId" style="margin-left:10px;margin-right:10px">Designation Code :</label>
                    
     <asp:TextBox ID="txtDeptId" runat="server"  Height="30px"></asp:TextBox>
     <label for="txtDeptName" style="margin-left:20px;margin-right:10px">Designation Name :</label>
@@ -42,7 +42,7 @@
     DataKeyNames="DesignationId" style="margin-left: 0px" EmptyDataText="No data found" ShowHeaderWhenEmpty="true" CssClass="table table-bordered"
     HeaderStyle-CssClass="thead-dark">
     <Columns>
-                            <asp:BoundField DataField="DesignationId" HeaderText="Designation ID" SortExpression="DesignationId"  ItemStyle-CssClass="align-middle" />
+                            <asp:BoundField DataField="DesignationId" HeaderText="Designation Code" SortExpression="DesignationId"  ItemStyle-CssClass="align-middle" />
                             <asp:BoundField DataField="DesignationName" HeaderText="Designation Name" SortExpression="DesignationName"  ItemStyle-CssClass="align-middle"/>
                             <asp:BoundField DataField="AddedDate" HeaderText="Added Date" SortExpression="AddedDate"  ItemStyle-CssClass="align-middle" />
                         </Columns>

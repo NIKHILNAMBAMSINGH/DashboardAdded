@@ -23,7 +23,7 @@ public partial class Admin_Employee_EmployeeList : System.Web.UI.Page
             string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "SELECT Concat(FirstName,'',LastName) as EmpName, EmpId as EmpId,Dob as Dob,Gender as Gender, ContactNumber as ContactNumber, Email as Email,Address as Address, AddedDate as AddedDate FROM dbo.EmployeeDetailsTbl where EmpId=@EmpId";
+                string query = "SELECT Concat(FirstName,'',LastName) as EmpName, EmpId as EmpId,Dob as Dob,Gender as Gender, ContactNumber as ContactNumber, Email as Email,Address as Address, AddedDate as AddedDate FROM dbo.EmployeeDetailsTbl";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);

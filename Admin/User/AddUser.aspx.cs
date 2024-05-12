@@ -24,7 +24,7 @@ public partial class Admin_User_AddUser : System.Web.UI.Page
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
 
-            string query = "SELECT EmpId, CONCAT(FirstName, ' ', LastName) AS EmpName FROM dbo.EmployeeDetailsTbl where EmpId NOT IN (Select EmpId from dbo.UserDetailsTbl)";
+            string query = "SELECT EmpId, CONCAT(FirstName, ' ', LastName) AS EmpName FROM dbo.EmployeeDetailsTbl";
 
             SqlCommand command = new SqlCommand(query, connection);
             connection.Open();

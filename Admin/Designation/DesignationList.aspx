@@ -18,7 +18,7 @@
     DataKeyNames="DesignationId" style="margin-left: 0px" EmptyDataText="No data found" ShowHeaderWhenEmpty="true" CssClass="table table-bordered"
     HeaderStyle-CssClass="thead-dark">
    <Columns>
-                            <asp:BoundField DataField="DesignationId" HeaderText="Designation ID" SortExpression="DesignationtId" />
+                            <asp:BoundField DataField="DesignationId" HeaderText="Designation Code" SortExpression="DesignationtId" />
                             <asp:BoundField DataField="DesignationName" HeaderText="Designation Name" SortExpression="DesignationName" />
                             <asp:BoundField DataField="AddedDate" HeaderText="Added Date" SortExpression="AddedDate" />
                         </Columns>

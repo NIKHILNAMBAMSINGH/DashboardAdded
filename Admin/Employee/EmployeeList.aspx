@@ -19,7 +19,7 @@
     DataKeyNames="EmpId" style="margin-left: 0px" EmptyDataText="No data found" ShowHeaderWhenEmpty="true" CssClass="table table-bordered"
     HeaderStyle-CssClass="thead-dark">
     <Columns>
-        <asp:BoundField DataField="EmpId" HeaderText="Employee ID" SortExpression="DeptId" ItemStyle-CssClass="align-middle" />
+        <asp:BoundField DataField="EmpId" HeaderText="Employee Code" SortExpression="DeptId" ItemStyle-CssClass="align-middle" />
         <asp:BoundField DataField="EmpName" HeaderText="Employee Name" SortExpression="EmpName" ItemStyle-CssClass="align-middle" />
         <asp:BoundField DataField="Dob" HeaderText="DOB" SortExpression="Dob" ItemStyle-CssClass="align-middle" />
         <asp:BoundField DataField="AddedDate" HeaderText="Added Date" SortExpression="AddedDate" ItemStyle-CssClass="align-middle" />

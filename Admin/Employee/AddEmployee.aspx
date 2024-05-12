@@ -15,7 +15,7 @@
         <br />
                <div class="input-group">
               <div>     
- <label for="txtEmpId" style="margin-left:10px;margin-right:10px">Employee ID:</label>
+ <label for="txtEmpId" style="margin-left:10px;margin-right:10px">Employee Code:</label>
 <asp:TextBox ID="txtEmpId" runat="server"></asp:TextBox>
 
 <label for="txtFirstName" style="margin-left:20px;margin-right:10px">First Name:</label>

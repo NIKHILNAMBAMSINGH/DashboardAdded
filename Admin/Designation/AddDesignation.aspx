@@ -14,7 +14,7 @@
         </div>
         <br />
                <div class="input-group">
-    <label for="txtDeptId" style="margin-left:10px;margin-right:10px">Designation ID :</label>
+    <label for="txtDeptId" style="margin-left:10px;margin-right:10px">Designation Code :</label>
                    
     <asp:TextBox ID="txtDeptId" runat="server"  Height="30px"></asp:TextBox>
     <label for="txtDeptName" style="margin-left:20px;margin-right:10px">Designation Name :</label>
