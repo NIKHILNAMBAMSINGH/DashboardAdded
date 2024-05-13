@@ -85,11 +85,30 @@
                             <h6 class="collapse-header">Salary Options:</h6>
                           
                               <asp:HyperLink ID="hyperlink3" runat="server" NavigateUrl="~/Employee/Salary/Salary.aspx" CssClass="collapse-item" Text="View Salary"></asp:HyperLink>
-                            <asp:HyperLink ID="hyperlink4" runat="server" NavigateUrl="~/Employee/Salary/Salary.aspx" CssClass="collapse-item" Text="Salary List"></asp:HyperLink>
+                            
                         </div>
                     </div>
     
 </li>
+
+                 <li class="nav-item active">
+    <div class="nav-link" id="profileDropdown" role="button" data-toggle="collapse" data-target="#profileCollapse"
+         aria-expanded="true" aria-controls="profileCollapse">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Profile</span>
+    </div>
+    <div id="profileCollapse" class="collapse" aria-labelledby="profileDropdown" data-parent="#accordionSidebar">
+       <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Profile Options:</h6>
+                          
+                              <asp:HyperLink ID="hyperlink6" runat="server" NavigateUrl="~/Employee/Profile/ViewProfile.aspx" CssClass="collapse-item" Text="View Profile"></asp:HyperLink>
+                            
+                        </div>
+                    </div>
+</li>
+
+
+
 
 
 
