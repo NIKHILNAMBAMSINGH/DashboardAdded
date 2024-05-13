@@ -59,42 +59,44 @@
 
                 <!-- Nav Item - Salary -->
                 <li class="nav-item active">
-                    <div class="nav-link" id="salaryDropdown" role="button" data-toggle="collapse" data-target="#salaryCollapse"
-                         aria-expanded="true" aria-controls="salaryCollapse">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Salary</span>
-                    </div>
-                    <div id="salaryCollapse" class="collapse" aria-labelledby="salaryDropdown" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Salary Options:</h6>
+    <div class="nav-link" id="leaveDropdown" role="button" data-toggle="collapse" data-target="#leaveCollapse"
+         aria-expanded="true" aria-controls="leaveCollapse">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Leave</span>
+    </div>
+    <div id="leaveCollapse" class="collapse" aria-labelledby="leaveDropdown" data-parent="#accordionSidebar">
+       <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Leave Options:</h6>
                           
-                              <asp:HyperLink ID="hyperlinkSalaryList" runat="server" NavigateUrl="~/Employee/Leave/EmployeeLeaveList.aspx" CssClass="collapse-item" Text="Salary List"></asp:HyperLink>
-                            <asp:HyperLink ID="hyperlinkViewSalary" runat="server" NavigateUrl="~/Employee/Leave/ApplyLeave.aspx" CssClass="collapse-item" Text="View Salary"></asp:HyperLink>
+                              <asp:HyperLink ID="hyperlink1" runat="server" NavigateUrl="~/Employee/Leave/ApplyLeave.aspx" CssClass="collapse-item" Text="Apply Leave"></asp:HyperLink>
+                            <asp:HyperLink ID="hyperlink2" runat="server" NavigateUrl="~/Employee/Leave/EmployeeLeaveList.aspx" CssClass="collapse-item" Text="Leave List"></asp:HyperLink>
                         </div>
                     </div>
-                </li>
+</li>
 
-                <!-- Nav Item - Other Items -->
-                <li class="nav-item active">
-                    <asp:HyperLink ID="HyperLink1" runat="server" CssClass="nav-link" NavigateUrl="~/Employee/Profile/ViewProfile.aspx">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Profile</span>
-                    </asp:HyperLink>
-                </li>
+ <li class="nav-item active">
+    <div class="nav-link" id="salaryDropdown" role="button" data-toggle="collapse" data-target="#salaryCollapse"
+         aria-expanded="true" aria-controls="salaryCollapse">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Salary</span>
+    </div>
+    <div id="salaryCollapse" class="collapse" aria-labelledby="salaryDropdown" data-parent="#accordionSidebar">
+     <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Salary Options:</h6>
+                          
+                              <asp:HyperLink ID="hyperlink3" runat="server" NavigateUrl="~/Employee/Salary/Salary.aspx" CssClass="collapse-item" Text="View Salary"></asp:HyperLink>
+                            <asp:HyperLink ID="hyperlink4" runat="server" NavigateUrl="~/Employee/Salary/Salary.aspx" CssClass="collapse-item" Text="Salary List"></asp:HyperLink>
+                        </div>
+                    </div>
+    
+</li>
 
-                <li class="nav-item active">
-                    <asp:HyperLink ID="HyperLink2" runat="server" CssClass="nav-link" NavigateUrl="~/Employee/Leave/LeaveDashboard.aspx">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Leave</span>
-                    </asp:HyperLink>
-                </li>
 
-                <li class="nav-item active">
-                    <asp:HyperLink ID="HyperLink6" runat="server" CssClass="nav-link" NavigateUrl="~/Admin/Leave/LeaveDashboard.aspx">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Attendance</span>
-                    </asp:HyperLink>
-                </li>
+
+
+
+
+                
 
             </ul>
             <!-- End of Sidebar -->
