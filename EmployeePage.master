@@ -107,6 +107,21 @@
                     </div>
 </li>
 
+                  <li class="nav-item active">
+    <div class="nav-link" id="passwordDropdown" role="button" data-toggle="collapse" data-target="#passwordCollapse"
+         aria-expanded="true" aria-controls="userCollapse">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>User</span>
+    </div>
+    <div id="passwordCollapse" class="collapse" aria-labelledby="passwordDropdown" data-parent="#accordionSidebar">
+       <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">User Options:</h6>
+                          
+                              <asp:HyperLink ID="hyperlink4" runat="server" NavigateUrl="~/Employee/User/ChangePassword.aspx" CssClass="collapse-item" Text="Change Password"></asp:HyperLink>
+                            
+                        </div>
+                    </div>
+</li>
 
 
 
@@ -133,27 +148,25 @@
                         
                         <ul class="navbar-nav ml-auto">
 
-                           
-                            
-
-                            
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+
+                                        <%# Session["EmployeeName"] %>
+
+                                    </span>
 
                                 </a>
                                
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                      aria-labelledby="userDropdown">
-                                   
-                                    <asp:HyperLink ID="logOutHyperlink" runat="server" Text="Log Out" NavigateUrl="~/Login.aspx"></asp:HyperLink>
+                                    <asp:HyperLink ID="ChangePasswrdlink" runat="server" Text="Change Password" NavigateUrl="~/Employee/User/ChangePassword.aspx" ></asp:HyperLink>
+                                    <br />
+                                    <br />
+                                      <asp:HyperLink ID="logOutHyperlink" runat="server" Text="Log Out" NavigateUrl="~/Login.aspx"></asp:HyperLink>
                                 </div>
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                     aria-labelledby="userDropdown">
-                                   
-                                    <asp:HyperLink ID="HyperLink24" runat="server" Text="Change Password" NavigateUrl="~/Login.aspx"></asp:HyperLink>
-                                </div>
+                               
                                 
                             </li>
 

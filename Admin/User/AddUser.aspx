@@ -20,12 +20,23 @@
     <label for="lblPassword" style="margin-left:10px;margin-right:10px">Password :</label>
     <asp:TextBox ID="txtPassword" runat="server" Height="30px"></asp:TextBox>
 
+
+                   <div style="margin-top:20px">
                    <asp:Label ID="lblDesignation" runat="server" style="margin-left:20px; margin-right:10px" Text="Employee Name:"></asp:Label>
                     <asp:DropDownList ID="ddlDesignation" runat="server" Height="30px"></asp:DropDownList>
-    <br />
-                    <br />
+                
+   <label for="lblMonth" style="margin-left:10px;margin-right:10px">Role :</label>
+
+<asp:DropDownList ID="ddlMonth" runat="server" Height="30px" Width="100px">
+   <asp:ListItem Text="Admin" Value="1"></asp:ListItem>
+    <asp:ListItem Text="Employee" Value="2"></asp:ListItem>
+    
+</asp:DropDownList>
+                       
+
+
                 <asp:Button ID="btnAddEmployee" runat="server" Text="Add Employee" CssClass="btn btn-primary" Height="40px" style="margin-right: 20px; margin-left: 20px;margin-bottom:5px"  OnClick="btnAddEmployee_Click" />
-                    
+                    </div>
                    
        
     </div>                  

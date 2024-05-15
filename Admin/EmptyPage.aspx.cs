@@ -4,8 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 using System.Globalization;
-
-public partial class Empty : System.Web.UI.Page
+public partial class Admin_EmptyPage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -13,7 +12,7 @@ public partial class Empty : System.Web.UI.Page
     }
     protected void btnShowAllHolidayLists_Click()
     {
-        
+
         try
         {
             string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;

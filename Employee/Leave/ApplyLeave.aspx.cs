@@ -54,7 +54,7 @@ public partial class Employee_Leave_ApplyLeave : System.Web.UI.Page
         {
             DateTime FromDate = DateTime.ParseExact(TextBoxLeaveFrom.Text, "dd/MM/yyyy", null);
             DateTime ToDate = DateTime.ParseExact(TextBoxLeaveTo.Text, "dd/MM/yyyy", null);
-            TimeSpan TimeDiff = ToDate - FromDate;
+            TimeSpan TimeDiff = ToDate.AddDays(1).Subtract(FromDate);
 
             if (TimeDiff.TotalDays <= 0)
             {
@@ -73,8 +73,8 @@ public partial class Employee_Leave_ApplyLeave : System.Web.UI.Page
         int empId = int.Parse(Session["EmployeeId"].ToString());
         DateTime FromDate = DateTime.ParseExact(TextBoxLeaveFrom.Text, "dd/MM/yyyy", null);
         DateTime ToDate = DateTime.ParseExact(TextBoxLeaveTo.Text, "dd/MM/yyyy", null);
-        TimeSpan timeDiff = ToDate - FromDate;
-        int numberOfDays = timeDiff.Days;
+        TimeSpan TimeDiff = ToDate.AddDays(1).Subtract(FromDate);
+        int numberOfDays = TimeDiff.Days;
        
         string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
         using (SqlConnection connection = new SqlConnection(_connectionString))

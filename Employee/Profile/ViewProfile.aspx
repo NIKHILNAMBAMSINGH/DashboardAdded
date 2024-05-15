@@ -59,5 +59,8 @@
             </div>
      
         </div>
+        <div>
+            <asp:Label ID="lbmsg" runat="server" Text=""></asp:Label>
+        </div>
 </asp:Content>
 

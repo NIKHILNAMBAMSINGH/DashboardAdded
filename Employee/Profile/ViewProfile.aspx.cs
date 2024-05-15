@@ -99,6 +99,8 @@ public partial class Employee_Profile_ViewProfile : System.Web.UI.Page
         };
 
         UpdateEmployeeDetails(updatedEmployee);
+        lbmsg.Text = "Updated Successfully";
+        
     }
 
     private void UpdateEmployeeDetails(EmployeeDetails employee)

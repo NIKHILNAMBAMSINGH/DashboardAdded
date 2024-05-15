@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.master" AutoEventWireup="true" CodeFile="Empty.aspx.cs" Inherits="Empty" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.master" AutoEventWireup="true" CodeFile="EmptyPage.aspx.cs" Inherits="Admin_EmptyPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -18,10 +18,10 @@
     HeaderStyle-CssClass="thead-dark">
     <Columns>
         <asp:BoundField DataField="HolidayName" HeaderText="Holiday Name" SortExpression="DeptId" ItemStyle-CssClass="align-middle" />
-        <asp:BoundField DataField="HolidayDate" HeaderText="Holiday Date" SortExpression="EmpName" ItemStyle-CssClass="align-middle" />
+        <asp:BoundField DataField="HolidayDate" HeaderText="Holiday Date" SortExpression="EmpName" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-CssClass="align-middle" />
         <asp:BoundField DataField="HolidayDay" HeaderText="Holiday Day" SortExpression="Dob" ItemStyle-CssClass="align-middle" />
         <asp:BoundField DataField="HolidayMonth" HeaderText="Holiday Month" SortExpression="AddedDate" ItemStyle-CssClass="align-middle" />
-        <asp:BoundField DataField="AddedDate" HeaderText="Added Date" SortExpression="AddedDate" ItemStyle-CssClass="align-middle" />
+        <asp:BoundField DataField="AddedDate" HeaderText="Added Date" SortExpression="AddedDate" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-CssClass="align-middle" />
        
     </Columns>
     <PagerSettings Mode="NumericFirstLast" Position="Bottom" />

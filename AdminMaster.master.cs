@@ -9,10 +9,19 @@ public partial class AdminMaster : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
 
-    }
-    protected void logoutLink_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("~/Login.aspx");
+            if (Session["Admin"] != null)
+            {
+
+                Page.DataBind();
+            }
+            else
+            {
+
+                Response.Redirect("~/Login.aspx");
+            }
+        }
     }
 }

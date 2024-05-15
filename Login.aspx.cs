@@ -16,7 +16,7 @@ public partial class Login : System.Web.UI.Page
 
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "SELECT EmpId, RoleId FROM dbo.UserDetailsTbl WHERE Username = @Username AND Password = @Password";
+            string query = "SELECT EmpId, RoleId FROM dbo.UserDetailsTbl WHERE Username = @Username AND Password = @Password AND IsActive=1";
 
             using (SqlCommand command = new SqlCommand(query, connection))
             {
@@ -38,9 +38,20 @@ public partial class Login : System.Web.UI.Page
 
                         if (roleId == 1)
                         {
-                            
+                            if (!reader.IsDBNull(reader.GetOrdinal("EmpId")))
+                            {
+                                int employeeId = reader.GetInt32(reader.GetOrdinal("EmpId"));
+                                Session["Admin"] = GetEmployeeName(employeeId);
+                                
+                            }
+                            else
+                            {
+                              
+                                Session["Admin"] = "Default Admin";
+                            }
+
                             Console.WriteLine("Redirecting to admin page");
-                            Response.Redirect("~/Empty.aspx");
+                            Response.Redirect("~/Admin/EmptyPage.aspx");
                         }
                         else
                         {

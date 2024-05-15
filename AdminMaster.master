@@ -41,7 +41,7 @@
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
-                    <asp:HyperLink ID="HyperLink5" runat="server" CssClass="nav-link">
+                    <asp:HyperLink ID="HyperLink5" runat="server" CssClass="nav-link" NavigateUrl="~/Admin/EmptyPage.aspx">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </asp:HyperLink>
@@ -231,7 +231,9 @@
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                         <%# Session["Admin"] %>
+                                    </span>
 
                                 </a>
                                

@@ -50,7 +50,7 @@
         <asp:BoundField DataField="HolidayDay" HeaderText="Holiday Day" SortExpression="Dob" ItemStyle-CssClass="align-middle" />
         <asp:BoundField DataField="HolidayMonth" HeaderText="Holiday Month" SortExpression="AddedDate" ItemStyle-CssClass="align-middle" />
         <asp:BoundField DataField="AddedDate" HeaderText="Added Date" SortExpression="AddedDate" ItemStyle-CssClass="align-middle" />
-       
+         
     </Columns>
     <PagerSettings Mode="NumericFirstLast" Position="Bottom" />
     <PagerStyle CssClass="justify-content-center" />

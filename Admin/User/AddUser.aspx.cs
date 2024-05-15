@@ -44,7 +44,7 @@ public partial class Admin_User_AddUser : System.Web.UI.Page
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             string query = "INSERT INTO dbo.UserDetailsTbl(Username,Password,EmpId,RoleId) " +
-                           "VALUES (@Username,@Password,@EmpId,2)";
+                           "VALUES (@Username,@Password,@EmpId,@RoleId)";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -52,7 +52,7 @@ public partial class Admin_User_AddUser : System.Web.UI.Page
             command.Parameters.AddWithValue("@Username", txtUsername.Text.Trim());
             command.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());
             command.Parameters.AddWithValue("@EmpId", ddlDesignation.SelectedValue);
-            command.Parameters.AddWithValue("@RoleId", 2);
+            command.Parameters.AddWithValue("@RoleId", ddlMonth.SelectedValue);
 
             try
             {
