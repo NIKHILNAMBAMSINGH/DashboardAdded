@@ -21,7 +21,7 @@ public partial class Admin_Designation_DesignationList : System.Web.UI.Page
             string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "SELECT * FROM dbo.DesignationDetailsTbl";
+                string query = "SELECT * FROM dbo.DesignationDetailsTbl where IsActive=1";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);

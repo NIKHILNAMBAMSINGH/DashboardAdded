@@ -10,7 +10,7 @@ public partial class Admin_User_SearchUser : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            
+
         }
     }
 
@@ -61,7 +61,7 @@ public partial class Admin_User_SearchUser : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            
+
         }
     }
 
@@ -106,22 +106,29 @@ public partial class Admin_User_SearchUser : System.Web.UI.Page
 
     protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        string userId = GridView2.DataKeys[e.RowIndex].Values[0].ToString();
+        string deptId = GridView2.DataKeys[e.RowIndex].Values["DeptId"].ToString();
 
-        string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
-        using (SqlConnection connection = new SqlConnection(_connectionString))
+        try
         {
-            string query = "UPDATE dbo.UserDetailsTbl SET IsActive = 0 WHERE UserId = @UserId";
-            using (SqlCommand cmd = new SqlCommand(query, connection))
+            string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                cmd.Parameters.AddWithValue("@UserId", userId);
+                string query = "UPDATE dbo.DepartmentDetailsTbl SET IsActive = 0 WHERE DeptId = @DeptId";
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@DeptId", deptId);
 
-                connection.Open();
-                cmd.ExecuteNonQuery();
-                connection.Close();
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
             }
-        }
 
-        BindGridView();
+            BindGridView();
+        }
+        catch (Exception ex)
+        {
+
+        }
     }
 }

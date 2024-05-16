@@ -21,7 +21,7 @@
     <asp:TextBox ID="txtDeptName" runat="server" Height="30px"></asp:TextBox>
     <br />
                     <br />
-                <asp:Button ID="btnSearchDesignation" runat="server" Text="Add Department" CssClass="btn btn-primary" Height="40px" style="margin-right: 20px; margin-left: 20px;margin-bottom:5px"  OnClick="btnAddDesignation_Click" />
+                <asp:Button ID="btnSearchDesignation" runat="server" Text="Add Department" CssClass="btn btn-primary" Height="40px" style="margin-right: 20px; margin-left: 20px;margin-bottom:5px"  OnClick="btnAddDesignation_Click"  OnClientClick="return validateForm();" />
                     <asp:Button ID="btnResetDepartment" runat="server" Text="Reset Department" CssClass="btn btn-primary" Height="40px" style="margin-right: 20px; margin-left: 20px;margin-bottom:5px"  OnClick="btnAddDesignation_Click" />
                    
        
@@ -31,5 +31,18 @@
            <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
 </div>
         </div>
+     <script>
+         function validateForm() {
+             var deptId = document.getElementById('<%= txtDeptId.ClientID %>').value;
+            var deptName = document.getElementById('<%= txtDeptName.ClientID %>').value;
+
+            if (deptId.trim() === '' || deptName.trim() === '') {
+                alert('Please fill in all the details.');
+                return false;
+            } else {
+                return true;
+            }
+        }
+</script>
 </asp:Content>
 
