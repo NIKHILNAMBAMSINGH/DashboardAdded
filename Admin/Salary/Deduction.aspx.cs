@@ -1,24 +1,24 @@
-﻿﻿﻿using System;
+﻿using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 using System.Globalization;
 
+public partial class Admin_Salary_Deduction : System.Web.UI.Page{
 
-public partial class Admin_Salary_Deduction : System.Web.UI.Page
-{
-    protected void Page_Load(object sender, EventArgs e)
+protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-
             BindEmployeeId();
             PopulateMonthDropdown();
-
         }
-
     }
+protected void txtBasicSalary_TextChanged(object sender, EventArgs e)
+{
+    CalculateTotalDeduction();
+}
 
     private void BindEmployeeId()
     {
@@ -30,12 +30,16 @@ public partial class Admin_Salary_Deduction : System.Web.UI.Page
             SqlCommand command = new SqlCommand(query, connection);
 
             connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                DataTable dataTable = new DataTable();
+                dataTable.Load(reader);
 
-            ddlEmpId.DataSource = reader;
-            ddlEmpId.DataTextField = "EmpId";
-            ddlEmpId.DataValueField = "EmpId";
-            ddlEmpId.DataBind();
+                ddlEmpId.DataSource = dataTable;
+                ddlEmpId.DataTextField = "EmpId";
+                ddlEmpId.DataValueField = "EmpId";
+                ddlEmpId.DataBind();
+            }
         }
         ddlEmpId.Items.Insert(0, new ListItem("Select empId", ""));
     }
@@ -48,13 +52,13 @@ public partial class Admin_Salary_Deduction : System.Web.UI.Page
             string empName = GetEmployeeName(selectedEmpId);
             txtEmpName.Text = empName;
         }
-
         else
         {
             lblMessage.Text = "Employee Code is not present";
             lblMessage.ForeColor = System.Drawing.Color.Red;
         }
     }
+
     private string GetEmployeeName(int EmpId)
     {
         string employeeName = null;
@@ -62,7 +66,7 @@ public partial class Admin_Salary_Deduction : System.Web.UI.Page
 
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "select CONCAT(FirstName, ' ', LastName) as Name from dbo.EmployeeDetailsTbl where EmpId=@EmpId";
+            string query = "SELECT CONCAT(FirstName, ' ', LastName) AS Name FROM dbo.EmployeeDetailsTbl WHERE EmpId=@EmpId";
 
             using (SqlCommand command = new SqlCommand(query, connection))
             {
@@ -99,7 +103,7 @@ public partial class Admin_Salary_Deduction : System.Web.UI.Page
         decimal AttendanceDeduction = Convert.ToDecimal(txtAttendanceDeduction.Text.Trim());
         decimal LeaveDeduction = Convert.ToDecimal(txtLeaveDeduction.Text.Trim());
 
-        decimal totalDeduction = IncomeTax + ProvidentFund + ProfessionalTax + OtherDeduction+AttendanceDeduction+LeaveDeduction;
+        decimal totalDeduction = IncomeTax + ProvidentFund + ProfessionalTax + OtherDeduction + AttendanceDeduction + LeaveDeduction;
         txtTotalEarning.Text = totalDeduction.ToString();
 
         DateTime now = DateTime.Now;
@@ -109,8 +113,8 @@ public partial class Admin_Salary_Deduction : System.Web.UI.Page
 
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "INSERT INTO dbo.DeductionDetailsTbl (EmpId, IncomeTax, ProvidentFund,ProfessionalTax, OtherDeduction, TotalDeduction, Month, Year,AttendanceDeduction,LeaveDeduction)" +
-                           "VALUES (@EmpId, @IncomeTax, @ProvidentFund, @ProfessionalTax, @OtherDeduction, @TotalDeduction, @Month, @Year,@AttendanceDeduction,@LeaveDeduction)";
+            string query = "INSERT INTO dbo.DeductionDetailsTbl (EmpId, IncomeTax, ProvidentFund, ProfessionalTax, OtherDeduction, TotalDeduction, Month, Year, AttendanceDeduction, LeaveDeduction)" +
+                           "VALUES (@EmpId, @IncomeTax, @ProvidentFund, @ProfessionalTax, @OtherDeduction, @TotalDeduction, @Month, @Year, @AttendanceDeduction, @LeaveDeduction)";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -121,8 +125,8 @@ public partial class Admin_Salary_Deduction : System.Web.UI.Page
             command.Parameters.AddWithValue("@OtherDeduction", OtherDeduction);
             command.Parameters.AddWithValue("@TotalDeduction", totalDeduction);
             command.Parameters.AddWithValue("@LeaveDeduction", LeaveDeduction);
-            command.Parameters.AddWithValue("@AttendanceDeduction",AttendanceDeduction);
-            command.Parameters.AddWithValue("@Month",MonthName);
+            command.Parameters.AddWithValue("@AttendanceDeduction", AttendanceDeduction);
+            command.Parameters.AddWithValue("@Month", MonthName);
             command.Parameters.AddWithValue("@Year", year);
 
             try
@@ -143,30 +147,49 @@ public partial class Admin_Salary_Deduction : System.Web.UI.Page
             }
             catch (Exception ex)
             {
-                Response.Write("An error occurred: " + ex.Message);
+                lblMessage.Text = "An error occurred: " + ex.Message;
+                lblMessage.ForeColor = System.Drawing.Color.Red;
             }
         }
     }
-    protected void txtBasicSalary_TextChanged(object sender, EventArgs e)
+
+    protected void txtIncomeTax_TextChanged(object sender, EventArgs e)
     {
-        CalculateTotalEarning();
+        CalculateTotalDeduction();
     }
 
+    protected void txtProvidentFund_TextChanged(object sender, EventArgs e)
+    {
+        CalculateTotalDeduction();
+    }
+
+    protected void txtProfessionalTax_TextChanged(object sender, EventArgs e)
+    {
+        CalculateTotalDeduction();
+    }
+
+    protected void txtOtherDeduction_TextChanged(object sender, EventArgs e)
+    {
+        CalculateTotalDeduction();
+    }
+
+    protected void txtAttendanceDeduction_TextChanged(object sender, EventArgs e)
+    {
+        CalculateTotalDeduction();
+    }
+
+    protected void txtLeaveDeduction_TextChanged(object sender, EventArgs e)
+    {
+        CalculateTotalDeduction();
+    }
     protected void txtAllowances_TextChanged(object sender, EventArgs e)
     {
-        CalculateTotalEarning();
+        CalculateTotalDeduction();
     }
 
-    protected void txtBonus_TextChanged(object sender, EventArgs e)
-    {
-        CalculateTotalEarning();
-    }
 
-    protected void txtMiscellaneous_TextChanged(object sender, EventArgs e)
-    {
-        CalculateTotalEarning();
-    }
-    private void CalculateTotalEarning()
+
+    private void CalculateTotalDeduction()
     {
         decimal IncomeTax = string.IsNullOrEmpty(txtIncomeTax.Text) ? 0 : Convert.ToDecimal(txtIncomeTax.Text.Trim());
         decimal ProvidentFund = string.IsNullOrEmpty(txtProvidentFund.Text) ? 0 : Convert.ToDecimal(txtProvidentFund.Text.Trim());
@@ -175,8 +198,7 @@ public partial class Admin_Salary_Deduction : System.Web.UI.Page
         decimal AttendanceDeduction = string.IsNullOrEmpty(txtAttendanceDeduction.Text) ? 0 : Convert.ToDecimal(txtAttendanceDeduction.Text.Trim());
         decimal LeaveDeduction = string.IsNullOrEmpty(txtLeaveDeduction.Text) ? 0 : Convert.ToDecimal(txtLeaveDeduction.Text.Trim());
 
-
-        decimal totalDeduction = IncomeTax + ProvidentFund + ProfessionalTax + OtherDeduction+ AttendanceDeduction+ LeaveDeduction;
+        decimal totalDeduction = IncomeTax + ProvidentFund + ProfessionalTax + OtherDeduction + AttendanceDeduction + LeaveDeduction;
 
         txtTotalEarning.Text = totalDeduction.ToString();
     }
@@ -191,31 +213,32 @@ public partial class Admin_Salary_Deduction : System.Web.UI.Page
         txtProvidentFund.Text = "";
         txtTotalEarning.Text = "";
         txtAttendanceDeduction.Text = "";
-
-
     }
 
     private void EnableTextFields()
     {
-        txtIncomeTax.Text = "";
-        txtLeaveDeduction.Text = "";
-        txtOtherDeduction.Text = "";
-        txtProfessionalTax.Text = "";
-        txtProvidentFund.Text = "";
-        txtTotalEarning.Text = "";
+        txtIncomeTax.Enabled = true;
+        txtLeaveDeduction.Enabled = true;
+        txtOtherDeduction.Enabled = true;
+        txtProfessionalTax.Enabled = true;
+        txtProvidentFund.Enabled = true;
+        txtAttendanceDeduction.Enabled = true;
+        txtTotalEarning.Enabled = true;
         btnSaveSalary.Enabled = true;
     }
 
     private void DisableTextFields()
     {
-        txtIncomeTax.Text = "";
-        txtLeaveDeduction.Text = "";
-        txtOtherDeduction.Text = "";
-        txtProfessionalTax.Text = "";
-        txtProvidentFund.Text = "";
-        txtTotalEarning.Text = "";
-
+        txtIncomeTax.Enabled = false;
+        txtLeaveDeduction.Enabled = false;
+        txtOtherDeduction.Enabled = false;
+        txtProfessionalTax.Enabled = false;
+        txtProvidentFund.Enabled = false;
+        txtAttendanceDeduction.Enabled = false;
+        txtTotalEarning.Enabled = false;
+        btnSaveSalary.Enabled = false;
     }
+
     protected void btnSearchSalary_Click(object sender, EventArgs e)
     {
         int EmpId = int.Parse(ddlEmpId.SelectedValue);
@@ -224,6 +247,7 @@ public partial class Admin_Salary_Deduction : System.Web.UI.Page
         string MonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
         int year = now.Year;
         string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             string query = "SELECT COUNT(*) FROM dbo.DeductionDetailsTbl WHERE EmpId = @EmpId AND Month = @Month AND Year = @Year";
@@ -231,20 +255,27 @@ public partial class Admin_Salary_Deduction : System.Web.UI.Page
             command.Parameters.AddWithValue("@EmpId", EmpId);
             command.Parameters.AddWithValue("@Month", MonthName);
             command.Parameters.AddWithValue("@Year", year);
-
-            connection.Open();
-            int count = (int)command.ExecuteScalar();
-            if (count > 0)
+             try
             {
-                lblMessage.Text = "Earning for the selected employee, month, and year already exists!";
-                lblMessage.ForeColor = System.Drawing.Color.Red;
-                DisableTextFields();
+                connection.Open();
+                int count = (int)command.ExecuteScalar();
+                if (count > 0)
+                {
+                    lblMessage.Text = "Deduction for the selected employee, month, and year already exists!";
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
+                    DisableTextFields();
+                }
+                else
+                {
+                    lblMessage.Text = "";
+                    lblMessage.ForeColor = System.Drawing.Color.Black;
+                    EnableTextFields();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                lblMessage.Text = "";
-                lblMessage.ForeColor = System.Drawing.Color.Black;
-                EnableTextFields();
+                lblMessage.Text = "An error occurred: " + ex.Message;
+                lblMessage.ForeColor = System.Drawing.Color.Red;
             }
         }
     }

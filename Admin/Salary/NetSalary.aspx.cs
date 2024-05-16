@@ -28,12 +28,16 @@ public partial class Admin_Salary_NetSalary : System.Web.UI.Page
             SqlCommand command = new SqlCommand(query, connection);
 
             connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
 
-            ddlEmpId.DataSource = reader;
-            ddlEmpId.DataTextField = "EmpId";
-            ddlEmpId.DataValueField = "EmpId";
-            ddlEmpId.DataBind();
+                ddlEmpId.DataSource = dataTable;
+                ddlEmpId.DataTextField = "EmpId";
+                ddlEmpId.DataValueField = "EmpId";
+                ddlEmpId.DataBind();
+            }
         }
         ddlEmpId.Items.Insert(0, new ListItem("Select empId", ""));
     }
@@ -85,7 +89,6 @@ public partial class Admin_Salary_NetSalary : System.Web.UI.Page
         string month = ddlMonth.SelectedValue;
 
         string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
-
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             string query = "SELECT e.TotalEarning as TotalEarning, d.TotalDeduction as TotalDeduction FROM dbo.EarningDetailsTbl e LEFT JOIN dbo.DeductionDetailsTbl d ON e.EmpId = d.DeductionId WHERE e.Month = @Month AND d.Month = @Month AND e.EmpId = @employeeId";
@@ -94,35 +97,39 @@ public partial class Admin_Salary_NetSalary : System.Web.UI.Page
             {
                 command.Parameters.AddWithValue("@employeeId", empId);
                 command.Parameters.AddWithValue("@Month", month);
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
 
-                if (reader.Read())
+                try
                 {
-                    EmployeeSalary salary = new EmployeeSalary();
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int totalEarning = reader["TotalEarning"] != DBNull.Value ? Convert.ToInt32(reader["TotalEarning"]) : 0;
+                            int totalDeduction = reader["TotalDeduction"] != DBNull.Value ? Convert.ToInt32(reader["TotalDeduction"]) : 0;
 
-                    salary.TotalEarning = Convert.ToInt32(reader["TotalEarning"]);
-                    salary.TotalDeduction = Convert.ToInt32(reader["TotalDeduction"]);
-                    salary.NetPayable = salary.TotalEarning - salary.TotalDeduction;
+                            int netPayable = totalEarning - totalDeduction;
 
-                    txtNetTotalEarning.Text = salary.TotalEarning.ToString();
-                    txtNetTotalDeduction.Text = salary.TotalDeduction.ToString();
-                    txtNetPayable.Text = salary.NetPayable.ToString();
-
+                            txtNetTotalEarning.Text = totalEarning.ToString();
+                            txtNetTotalDeduction.Text = totalDeduction.ToString();
+                            txtNetPayable.Text = netPayable.ToString();
+                        }
+                        else
+                        {
+                            txtNetTotalEarning.Text = "0";
+                            txtNetTotalDeduction.Text = "0";
+                            txtNetPayable.Text = "0";
+                        }
+                    }
                 }
-
-
-                else
+                catch (Exception ex)
                 {
-                    txtNetTotalEarning.Text = "0";
-                    txtNetTotalDeduction.Text = "0";
-                    txtNetPayable.Text = "0";
+                    lblMessage.Text = "An error occurred: " + ex.Message;
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
                 }
             }
         }
     }
-
-
     protected class EmployeeSalary
     {
         public int TotalEarning { get; set; }

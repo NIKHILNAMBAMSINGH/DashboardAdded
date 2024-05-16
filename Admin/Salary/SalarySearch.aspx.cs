@@ -7,16 +7,14 @@ using System.Globalization;
 
 public partial class Admin_Salary_SalarySearch : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-
             BindEmployeeId();
             PopulateMonthDropdown();
-
         }
-
     }
 
     private void BindEmployeeId()
@@ -29,12 +27,16 @@ public partial class Admin_Salary_SalarySearch : System.Web.UI.Page
             SqlCommand command = new SqlCommand(query, connection);
 
             connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                DataTable dataTable = new DataTable();
+                dataTable.Load(reader);
 
-            ddlEmpId.DataSource = reader;
-            ddlEmpId.DataTextField = "EmpId";
-            ddlEmpId.DataValueField = "EmpId";
-            ddlEmpId.DataBind();
+                ddlEmpId.DataSource = dataTable;
+                ddlEmpId.DataTextField = "EmpId";
+                ddlEmpId.DataValueField = "EmpId";
+                ddlEmpId.DataBind();
+            }
         }
         ddlEmpId.Items.Insert(0, new ListItem("Select empId", ""));
     }
@@ -47,13 +49,13 @@ public partial class Admin_Salary_SalarySearch : System.Web.UI.Page
             string empName = GetEmployeeName(selectedEmpId);
             txtEmpName.Text = empName;
         }
-
         else
         {
             lblMessage.Text = "Employee Code is not present";
             lblMessage.ForeColor = System.Drawing.Color.Red;
         }
     }
+
     private string GetEmployeeName(int EmpId)
     {
         string employeeName = null;
@@ -61,7 +63,7 @@ public partial class Admin_Salary_SalarySearch : System.Web.UI.Page
 
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "select CONCAT(FirstName, ' ', LastName) as Name from dbo.EmployeeDetailsTbl where EmpId=@EmpId";
+            string query = "SELECT CONCAT(FirstName, ' ', LastName) AS Name FROM dbo.EmployeeDetailsTbl WHERE EmpId=@EmpId";
 
             using (SqlCommand command = new SqlCommand(query, connection))
             {
@@ -77,6 +79,7 @@ public partial class Admin_Salary_SalarySearch : System.Web.UI.Page
         }
         return employeeName;
     }
+
     private void PopulateMonthDropdown()
     {
         for (int i = 1; i <= 12; i++)
@@ -85,12 +88,12 @@ public partial class Admin_Salary_SalarySearch : System.Web.UI.Page
             ddlMonth.Items.Add(new ListItem(monthName, i.ToString()));
         }
     }
+
     protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         GridView2.PageIndex = e.NewPageIndex;
         btnSearchSalary_Click(sender, e);
     }
-
 
     protected void btnSearchSalary_Click(object sender, EventArgs e)
     {
@@ -99,6 +102,7 @@ public partial class Admin_Salary_SalarySearch : System.Web.UI.Page
         int month = now.Month;
         string MonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
         int year = now.Year;
+
         try
         {
             string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
@@ -119,7 +123,9 @@ public partial class Admin_Salary_SalarySearch : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-
+            
+            lblMessage.Text = "An error occurred while searching the salary details.";
+            lblMessage.ForeColor = System.Drawing.Color.Red;
         }
     }
 }

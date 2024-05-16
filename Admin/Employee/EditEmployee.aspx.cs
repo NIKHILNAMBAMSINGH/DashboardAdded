@@ -25,13 +25,37 @@ public partial class Admin_Employee_EditEmployee : System.Web.UI.Page
             string query = "SELECT DeptId, DeptName FROM dbo.DepartmentDetailsTbl";
             SqlCommand command = new SqlCommand(query, connection);
             connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
-            ddlDepartment.DataSource = reader;
+
+            DataTable dt = new DataTable();
+            dt.Load(command.ExecuteReader());
+
+            ddlDepartment.DataSource = dt;
             ddlDepartment.DataTextField = "DeptName";
             ddlDepartment.DataValueField = "DeptId";
             ddlDepartment.DataBind();
         }
     }
+
+    private void BindDesignation()
+    {
+        string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            string query = "SELECT DesignationId, DesignationName FROM dbo.DesignationDetailsTbl";
+            SqlCommand command = new SqlCommand(query, connection);
+            connection.Open();
+
+            DataTable dt = new DataTable();
+            dt.Load(command.ExecuteReader());
+
+            ddlDesignation.DataSource = dt;
+            ddlDesignation.DataTextField = "DesignationName";
+            ddlDesignation.DataValueField = "DesignationId";
+            ddlDesignation.DataBind();
+        }
+    }
+
     private void DisableTextBoxes()
     {
         txtEmpId.Enabled = false;
@@ -46,41 +70,8 @@ public partial class Admin_Employee_EditEmployee : System.Web.UI.Page
         ddlDesignation.Enabled = false;
     }
 
-    private void EnableTextBoxes()
-    {
-        txtEmpId.Enabled = true;
-        ddlDepartment.Enabled = true;
-        txtDob.Enabled = true;
-        ddlGender.Enabled = true;
-        txtEmail.Enabled = true;
-        txtContactNumber.Enabled = true;
-        txtAddress.Enabled = true;
-        txtFirstName.Enabled = true;
-        txtLastName.Enabled = true;
-        ddlDesignation.Enabled = true;
-    }
-
-    private void BindDesignation()
-    {
-        string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
-
-        using (SqlConnection connection = new SqlConnection(_connectionString))
-        {
-            string query = "SELECT DesignationId, DesignationName FROM dbo.DesignationDetailsTbl";
-            SqlCommand command = new SqlCommand(query, connection);
-            connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
-            ddlDesignation.DataSource = reader;
-            ddlDesignation.DataTextField = "DesignationName";
-            ddlDesignation.DataValueField = "DesignationId";
-            ddlDesignation.DataBind();
-        }
-    }
-
-
     protected void btnEditEmployee_Click(object sender, EventArgs e)
     {
-        
     }
 
     protected void btnSearchDesignation_Click(object sender, EventArgs e)
@@ -133,14 +124,15 @@ public partial class Admin_Employee_EditEmployee : System.Web.UI.Page
                         Gender = reader["Gender"].ToString(),
                         Email = reader["Email"].ToString(),
                         ContactNo = reader["ContactNumber"].ToString(),
-                        Address = reader["Address"].ToString(),
-                       
+                        Address = reader["Address"].ToString()
                     };
 
+                    reader.Close(); 
                     return employee;
                 }
                 else
                 {
+                    reader.Close(); 
                     return null;
                 }
             }
@@ -158,6 +150,5 @@ public partial class Admin_Employee_EditEmployee : System.Web.UI.Page
         public string Address { get; set; }
         public string EmployeeFirstName { get; set; }
         public string EmployeeLastName { get; set; }
-        
     }
 }

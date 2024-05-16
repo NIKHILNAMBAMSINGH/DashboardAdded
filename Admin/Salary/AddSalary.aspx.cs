@@ -11,14 +11,10 @@ public partial class Admin_Salary_AddSalary : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-
             BindEmployeeId();
             PopulateMonthDropdown();
-
         }
-
     }
-
 
     private void BindEmployeeId()
     {
@@ -30,12 +26,16 @@ public partial class Admin_Salary_AddSalary : System.Web.UI.Page
             SqlCommand command = new SqlCommand(query, connection);
 
             connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                DataTable dataTable = new DataTable();
+                dataTable.Load(reader);
 
-            ddlEmpId.DataSource = reader;
-            ddlEmpId.DataTextField = "EmpId";
-            ddlEmpId.DataValueField = "EmpId";
-            ddlEmpId.DataBind();
+                ddlEmpId.DataSource = dataTable;
+                ddlEmpId.DataTextField = "EmpId";
+                ddlEmpId.DataValueField = "EmpId";
+                ddlEmpId.DataBind();
+            }
         }
         ddlEmpId.Items.Insert(0, new ListItem("Select empId", ""));
     }
@@ -48,13 +48,13 @@ public partial class Admin_Salary_AddSalary : System.Web.UI.Page
             string empName = GetEmployeeName(selectedEmpId);
             txtEmpName.Text = empName;
         }
-
         else
         {
             lblMessage.Text = "Employee Code is not present";
             lblMessage.ForeColor = System.Drawing.Color.Red;
         }
     }
+
     private string GetEmployeeName(int EmpId)
     {
         string employeeName = null;
@@ -62,7 +62,7 @@ public partial class Admin_Salary_AddSalary : System.Web.UI.Page
 
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "select CONCAT(FirstName, ' ', LastName) as Name from dbo.EmployeeDetailsTbl where EmpId=@EmpId";
+            string query = "SELECT CONCAT(FirstName, ' ', LastName) AS Name FROM dbo.EmployeeDetailsTbl WHERE EmpId=@EmpId";
 
             using (SqlCommand command = new SqlCommand(query, connection))
             {
@@ -143,6 +143,7 @@ public partial class Admin_Salary_AddSalary : System.Web.UI.Page
             }
         }
     }
+
     protected void txtBasicSalary_TextChanged(object sender, EventArgs e)
     {
         CalculateTotalEarning();
@@ -162,6 +163,7 @@ public partial class Admin_Salary_AddSalary : System.Web.UI.Page
     {
         CalculateTotalEarning();
     }
+
     private void CalculateTotalEarning()
     {
         decimal basicSalary = string.IsNullOrEmpty(txtBasicSalary.Text) ? 0 : Convert.ToDecimal(txtBasicSalary.Text.Trim());
@@ -182,8 +184,6 @@ public partial class Admin_Salary_AddSalary : System.Web.UI.Page
         txtAllowances.Text = "";
         txtMiscellaneous.Text = "";
         txtTotalEarning.Text = "";
-
-
     }
 
     private void EnableTextFields()
@@ -204,8 +204,8 @@ public partial class Admin_Salary_AddSalary : System.Web.UI.Page
         txtMiscellaneous.Enabled = false;
         txtTotalEarning.Enabled = false;
         btnSaveSalary.Enabled = false;
-
     }
+
     protected void btnSearchSalary_Click(object sender, EventArgs e)
     {
         int EmpId = int.Parse(ddlEmpId.SelectedValue);
@@ -214,6 +214,7 @@ public partial class Admin_Salary_AddSalary : System.Web.UI.Page
         string MonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
         int year = now.Year;
         string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             string query = "SELECT COUNT(*) FROM dbo.earningDetailsTbl WHERE EmpId = @EmpId AND Month = @Month AND Year = @Year";
@@ -239,4 +240,3 @@ public partial class Admin_Salary_AddSalary : System.Web.UI.Page
         }
     }
 }
-    

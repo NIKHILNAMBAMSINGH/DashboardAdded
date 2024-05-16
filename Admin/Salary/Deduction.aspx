@@ -44,16 +44,16 @@
                <div class="input-group">
     <label for="lblIncomeTax" style="margin-left:10px;margin-right:10px">Income Tax :</label>
                    
-    <asp:TextBox ID="txtIncomeTax" runat="server"  Height="30px" AutoPostBack="true"  OnTextChanged="txtBasicSalary_TextChanged"></asp:TextBox>
+    <asp:TextBox ID="txtIncomeTax" runat="server"  Height="30px" AutoPostBack="true"  OnTextChanged="txtIncomeTax_TextChanged"></asp:TextBox>
     <label for="lblProvidentFund" style="margin-left:20px;margin-right:10px">Provident Fund :</label>
-    <asp:TextBox ID="txtProvidentFund" runat="server" Height="30px" AutoPostBack="true" OnTextChanged="txtAllowances_TextChanged"></asp:TextBox>
+    <asp:TextBox ID="txtProvidentFund" runat="server" Height="30px" AutoPostBack="true" OnTextChanged="txtProvidentFund_TextChanged"></asp:TextBox>
 
     <label for="lblProfessionalTax" style="margin-left:20px;margin-right:10px">Professional Tax :</label>
-    <asp:TextBox ID="txtProfessionalTax" runat="server" Height="30px" AutoPostBack="true" OnTextChanged="txtBonus_TextChanged"></asp:TextBox>
+    <asp:TextBox ID="txtProfessionalTax" runat="server" Height="30px" AutoPostBack="true" OnTextChanged="txtProfessionalTax_TextChanged"></asp:TextBox>
                    
           <div style="margin-top:30px">         
                   <label for="lblOtherDeduction" style="margin-left:10px;margin-right:10px">Other Deduction :</label>
-    <asp:TextBox ID="txtOtherDeduction" runat="server" Height="30px" AutoPostBack="true" OnTextChanged="txtMiscellaneous_TextChanged"></asp:TextBox>
+    <asp:TextBox ID="txtOtherDeduction" runat="server" Height="30px" AutoPostBack="true" OnTextChanged="txtOtherDeduction_TextChanged"></asp:TextBox>
 
   <label for="lblAttedanceDeduction" style="margin-left:10px;margin-right:10px">Attendance Deduction :</label>
     <asp:TextBox ID="txtAttendanceDeduction" runat="server" Height="30px"></asp:TextBox>

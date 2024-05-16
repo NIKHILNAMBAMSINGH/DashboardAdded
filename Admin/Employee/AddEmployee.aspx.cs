@@ -8,10 +8,8 @@ public partial class Admin_Employee_AddEmployee : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
         if (!IsPostBack)
         {
-
             BindDepartments();
             BindDesignation();
             ClearFormFields();
@@ -20,39 +18,40 @@ public partial class Admin_Employee_AddEmployee : System.Web.UI.Page
 
     private void BindDepartments()
     {
-
         string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
 
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-
             string query = "SELECT DeptId, DeptName FROM dbo.DepartmentDetailsTbl";
 
             SqlCommand command = new SqlCommand(query, connection);
             connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
 
-            ddlDepartment.DataSource = reader;
+            DataTable dt = new DataTable();
+            dt.Load(command.ExecuteReader());
+
+            ddlDepartment.DataSource = dt;
             ddlDepartment.DataTextField = "DeptName";
             ddlDepartment.DataValueField = "DeptId";
             ddlDepartment.DataBind();
         }
     }
+
     private void BindDesignation()
     {
-
         string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
 
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-
             string query = "SELECT DesignationId, DesignationName FROM dbo.DesignationDetailsTbl";
 
             SqlCommand command = new SqlCommand(query, connection);
             connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
 
-            ddlDesignation.DataSource = reader;
+            DataTable dt = new DataTable();
+            dt.Load(command.ExecuteReader());
+
+            ddlDesignation.DataSource = dt;
             ddlDesignation.DataTextField = "DesignationName";
             ddlDesignation.DataValueField = "DesignationId";
             ddlDesignation.DataBind();
@@ -100,10 +99,12 @@ public partial class Admin_Employee_AddEmployee : System.Web.UI.Page
             }
             catch (Exception ex)
             {
-                Response.Write("An error occurred: " + ex.Message);
+                lblMessage.Text = "An error occurred: " + ex.Message;
+                lblMessage.ForeColor = System.Drawing.Color.Red;
             }
         }
     }
+
     private void ClearFormFields()
     {
         txtEmpId.Text = "";
@@ -113,7 +114,6 @@ public partial class Admin_Employee_AddEmployee : System.Web.UI.Page
         txtContactNumber.Text = "";
         txtEmail.Text = "";
         txtAddress.Text = "";
-
 
         ddlGender.SelectedIndex = 0;
         ddlDepartment.SelectedIndex = 0;
