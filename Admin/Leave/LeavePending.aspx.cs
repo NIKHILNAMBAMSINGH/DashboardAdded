@@ -69,11 +69,13 @@ public partial class Admin_Leave_LeavePending : System.Web.UI.Page
 
                 if (e.CommandName == "ApproveLeave" && chkApprove.Checked)
                 {
-                    UpdateLeaveStatus(leaveId, "Approved");
+                    
+                    GridView2.DataSource = null;
                 }
                 else if (e.CommandName == "RejectLeave" && chkApprove.Checked)
                 {
-                    UpdateLeaveStatus(leaveId, "Rejected");
+                    
+                    GridView2.DataSource = null;
                 }
 
                 BtnSearchLeave_Click(sender, e);
@@ -128,6 +130,7 @@ public partial class Admin_Leave_LeavePending : System.Web.UI.Page
                 }
                 else
                 {
+                    
                     GridView2.EmptyDataText = "No Records Found";
                     GridView2.ShowHeaderWhenEmpty = true;
                 }

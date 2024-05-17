@@ -34,6 +34,7 @@ public partial class Admin_Employee_EditEmployee : System.Web.UI.Page
             ddlDepartment.DataValueField = "DeptId";
             ddlDepartment.DataBind();
         }
+        ddlDepartment.Items.Insert(0, new ListItem("Select Department", ""));
     }
 
     private void BindDesignation()
@@ -54,6 +55,7 @@ public partial class Admin_Employee_EditEmployee : System.Web.UI.Page
             ddlDesignation.DataValueField = "DesignationId";
             ddlDesignation.DataBind();
         }
+        ddlDesignation.Items.Insert(0, new ListItem("Select Designation", ""));
     }
 
     private void DisableTextBoxes()

@@ -10,22 +10,16 @@ public partial class Admin_Designation_SearchDesignation : System.Web.UI.Page
     {
 
     }
-
-
-
     protected void btnSearchDesignation_Click(object sender, EventArgs e)
     {
         string status = ddlStatus.SelectedValue;
         string deptId = txtDeptId.Text.Trim();
         string deptName = txtDeptName.Text.Trim();
-
         try
         {
-
-            string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+           string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-
                 string query = "SELECT * FROM dbo.DesignationDetailsTbl WHERE 1 = 1";
 
                 if (!string.IsNullOrEmpty(deptId))
@@ -64,28 +58,18 @@ public partial class Admin_Designation_SearchDesignation : System.Web.UI.Page
                 DataTable dt = new DataTable();
 
                 adapter.Fill(dt);
-
-
-
                 if (dt.Rows.Count > 0)
                 {
-
-                    GridView2.DataSource = dt;
-
+                   GridView2.DataSource = dt;
                     GridView2.DataBind();
-
                 }
 
                 else
                 {
-
-                    GridView2.DataSource = null;
-
-                    GridView2.DataBind();
-
+                   GridView2.DataSource = null;
+                   GridView2.DataBind();
                     GridView2.EmptyDataText = "No Records Found";
-
-                    GridView2.ShowHeaderWhenEmpty = true;
+                 GridView2.ShowHeaderWhenEmpty = true;
 
                 }
 
