@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 ﻿﻿using System;
+=======
+﻿﻿﻿using System;
+>>>>>>> cb92eb5b2e9038612fdacf5d98757c880099271b
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> cb92eb5b2e9038612fdacf5d98757c880099271b
 public partial class Admin_Department_AddDepartment : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿﻿using System;
+=======
+﻿﻿﻿using System;
+>>>>>>> cb92eb5b2e9038612fdacf5d98757c880099271b
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,7 +14,11 @@ public partial class Admin_Designation_DesignationList : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+<<<<<<< HEAD
            
+=======
+
+>>>>>>> cb92eb5b2e9038612fdacf5d98757c880099271b
             BindGridView();
         }
     }

@@ -3,10 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
     .auto-style4 {
-        width: 100px;
+        width: 123px;
     }
-        .auto-style8 {
-            height: 43px;
+        .auto-style5 {
+            height: 48px;
         }
     </style>
 </asp:Content>
@@ -14,53 +14,33 @@
     <table class="auto-style1" style="height: 347px">
     <tr>
         <td class="auto-style4">
-           
-            <table class="auto-style1" style="height: 354px; width: 98%;">
-
+            <table class="auto-style1" style="height: 341px">
                 <tr>
-
-                    <td style="vertical-align: top" class="auto-style8">
-                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Admin/Welcome/EmptyWelcome.aspx">Home</asp:HyperLink>
+                    <td style="vertical-align: top">
+                        <asp:HyperLink ID="adminDepartmentID" runat="server" NavigateUrl="~/adminDepartment.aspx">Department</asp:HyperLink>
                     </td>
                 </tr>
                 <tr>
-
-                    <td style="vertical-align: top" class="auto-style8">
-                        <asp:HyperLink ID="adminDepartmentID" runat="server" NavigateUrl="~/Admin/Department/EmptyDepartment.aspx">Department</asp:HyperLink>
-                    </td>
-                </tr>
-                 <tr>
-                    <td style="vertical-align: top" class="auto-style8">
-                        <asp:HyperLink ID="adminDesignationID" runat="server" NavigateUrl="~/Admin/Designation/EmptyDesignation.aspx">Designation</asp:HyperLink>
+                    <td style="vertical-align: top">
+                        <asp:HyperLink ID="adminEmployeeID" runat="server" NavigateUrl="~/adminEmployee.aspx">Employee</asp:HyperLink>
                     </td>
                 </tr>
                 <tr>
-                    <td style="vertical-align: top" class="auto-style8">
-                        <asp:HyperLink ID="adminEmployeeID" runat="server" NavigateUrl="~/Admin/Employee/EmptyEmployee.aspx">Employee</asp:HyperLink>
+                    <td style="vertical-align: top">
+                        <asp:HyperLink ID="adminLeaveID" runat="server">Leave</asp:HyperLink>
                     </td>
                 </tr>
                 <tr>
-                    <td style="vertical-align: top" class="auto-style8">
-                        <asp:HyperLink ID="adminLeaveID" runat="server" NavigateUrl="~/LeaveEmptyAdmin.aspx">Leave</asp:HyperLink>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="vertical-align: top" class="auto-style8">
+                    <td style="vertical-align: top">
                         <asp:HyperLink ID="adminAttendanceID" runat="server">Attendance</asp:HyperLink>
                     </td>
                 </tr>
                 <tr>
-                    <td style="vertical-align: top" class="auto-style8">
-                        <asp:HyperLink ID="adminSalaryID" runat="server" NavigateUrl="~/Admin/Salary/EmptySalary.aspx">Salary</asp:HyperLink>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="vertical-align: top" class="auto-style8">
-                        <asp:HyperLink ID="adminLogOutID" runat="server" NavigateUrl="~/Login.aspx">Log Out</asp:HyperLink>
+                    <td style="vertical-align: top" class="auto-style5">
+                        <asp:HyperLink ID="adminLogOutID" runat="server">Log Out</asp:HyperLink>
                     </td>
                 </tr>
             </table>
-              
         </td>
         <td style="vertical-align: top">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">

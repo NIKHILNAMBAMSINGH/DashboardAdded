@@ -22,7 +22,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <table class="auto-style1" style="margin-top:0px" >
+        <table class="auto-style1">
             <tr>
                 <td>
                     <table class="auto-style1">
@@ -30,7 +30,7 @@
                             <td class="auto-style2">
                                 <asp:Image ID="Image1" runat="server" Height="90px" ImageUrl="~/images/payroll.png" Width="97px" />
                             </td>
-                            <td style="background-color:black; margin-top:0px">
+                            <td style="background-color:black">
                                 <div>
                                     <h3 style="color:white;text-align:center">Payroll Management System</h3>
                                 </div>

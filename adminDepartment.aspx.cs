@@ -53,15 +53,13 @@ public partial class adminDepartment : System.Web.UI.Page
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "INSERT INTO dbo.DepartmentDetailsTbl (DeptId, DeptName) VALUES (@DeptId, @DeptName)";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.Add("@DeptId", SqlDbType.Int).Value = deptId;
-                    command.Parameters.Add("@DeptName", SqlDbType.VarChar).Value = deptName;
+                string query = "INSERT INTO dbo.DepartmentDetailsTbl (deptId, deptName) VALUES (@DeptId, @DeptName)";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@DeptId", deptId);
+                command.Parameters.AddWithValue("@DeptName", deptName);
 
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
+                connection.Open();
+                command.ExecuteNonQuery();
             }
 
             BindGridView();
@@ -71,10 +69,9 @@ public partial class adminDepartment : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            
+
         }
     }
-
 
     protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
     {
@@ -82,36 +79,76 @@ public partial class adminDepartment : System.Web.UI.Page
         BindGridView();
     }
 
-
-    protected void btnSearchDepartment_Click(object sender, EventArgs e)
+    protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
     {
+        GridView1.EditIndex = e.NewEditIndex;
+        BindGridView();
+    }
+
+    protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+    {
+        int rowIndex = e.RowIndex;
+        GridViewRow row = GridView1.Rows[rowIndex];
+
+        int deptId = Convert.ToInt32(GridView1.DataKeys[rowIndex].Values["deptId"]);
+        string deptName = ((TextBox)row.Cells[1].Controls[0]).Text;
+        int newDeptId = Convert.ToInt32(((TextBox)row.Cells[0].Controls[0]).Text);
 
         try
         {
             string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
-            int searchDeptId = Convert.ToInt32(TextBoxDepartmentId.Text); 
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "SELECT * FROM dbo.DepartmentDetailsTbl WHERE DeptId = @DeptId";
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                adapter.SelectCommand.Parameters.AddWithValue("@DeptId", searchDeptId);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
+                string query = "UPDATE dbo.DepartmentDetailsTbl SET deptId = @NewDeptId, deptName = @DeptName WHERE deptId = @DeptId";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@DeptId", deptId);
+                command.Parameters.AddWithValue("@DeptName", deptName);
+                command.Parameters.AddWithValue("@NewDeptId", newDeptId);
 
-                if (dt.Rows.Count > 0)
-                {
-                    GridView1.DataSource = dt;
-                    GridView1.DataBind();
-                }
-                else
-                {
-                }
+                connection.Open();
+                command.ExecuteNonQuery();
             }
+
+            GridView1.EditIndex = -1;
+            BindGridView();
         }
         catch (Exception ex)
         {
-            
+
         }
+    }
+
+    protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        int rowIndex = e.RowIndex;
+        int deptId = Convert.ToInt32(GridView1.DataKeys[rowIndex].Values["deptId"]);
+
+        try
+        {
+            string _connectionString = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "DELETE FROM dbo.DepartmentDetailsTbl WHERE deptId = " + deptId;
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@DeptId", deptId);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+
+            BindGridView();
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
+    protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+    {
+        GridView1.EditIndex = -1;
+        BindGridView();
     }
 }

@@ -1,15 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage2.master" AutoEventWireup="true" CodeFile="adminEmployee.aspx.cs" Inherits="adminEmployee" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
-   
     <table class="auto-style1" style="height: 438px">
         <tr>
-            <td style="height: 114px; vertical-align: top; padding-left:50px">
-                  <h3 style="color:red">Employee Registration Form</h3>
+            <td style="height: 114px; vertical-align: top;">
                   <div id="heading">
                   <asp:Label ID="lblEmpId" runat="server" Text="Employee ID:"></asp:Label>
                     <asp:TextBox ID="txtEmpId" runat="server"></asp:TextBox>
              
+                    <asp:Label ID="lblUserId" runat="server" Text="User ID:"></asp:Label>
+                    <asp:TextBox ID="txtUserId" runat="server"></asp:TextBox>
               
                     <asp:Label ID="lblFirstName" runat="server" Text="First Name:"></asp:Label>
                     <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
@@ -38,38 +38,13 @@
                             <asp:ListItem Text="Other" Value="Other"></asp:ListItem>
                         </asp:DropDownList>
              <asp:Button ID="btnSubmit" runat="server" Text="Add Employee" Class="btnEmployee"  />
-              <asp:Button ID="btnSearchEmployee" runat="server" Text="Search" OnClick="btnSearchEmployee_Click"/>
             </div>
 
 
             </td>
         </tr>
         <tr>
-            <td style="vertical-align: top;padding-left:50px">
-                <div id="GridViewContainer" style="overflow:scroll;width:1000px" >
-        <h3 style="color:red">Employee Details</h3>
-             <asp:GridView ID="GridView1" runat="server"  AutoGenerateColumns="False" AllowPaging="true"
-    OnPageIndexChanging="OnPageIndexChanging" PageSize="5" CellPadding="0"
-    OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnRowDeleting="GridView1_RowDeleting"
-    OnRowCancelingEdit="GridView1_RowCancelingEdit" DataKeyNames="EmpId" >
-   <Columns>
-    <asp:BoundField DataField="EmpId" HeaderText="Employee ID" ReadOnly="true"  />
-    <asp:BoundField DataField="FirstName" HeaderText="First Name"  />
-    <asp:BoundField DataField="LastName" HeaderText="Last Name" />
-    <asp:BoundField DataField="Dob" HeaderText="Date of Birth"  />
-    <asp:BoundField DataField="Gender" HeaderText="Gender"  />
-    <asp:BoundField DataField="ContactNumber" HeaderText="Contact Number" />
-    <asp:BoundField DataField="Email" HeaderText="Email" />
-    <asp:BoundField DataField="Address" HeaderText="Address"  />
-    <asp:BoundField DataField="DepartmentId" HeaderText="Department ID" />
-    <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
-</Columns>
-                 
-                 <HeaderStyle Width="100px" />
-                 <PagerStyle Width="100px" />
-                 
-</asp:GridView>
-         </div></td>
+            <td style="vertical-align: top">&nbsp;</td>
         </tr>
     </table>
 </asp:Content>
